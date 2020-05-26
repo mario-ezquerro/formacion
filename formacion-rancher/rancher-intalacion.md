@@ -1,6 +1,6 @@
 # Introducción
 
-Para desplegar y administrar cluster de kubernetes con la herramienta rancher, hay que realizar despliegues sobre maquinas virtuales locales, OpenStack y Amazon EC2. 
+Para desplegar y administrar cluster de kubernetes con la herramienta rancher, hay que realizar despliegues sobre máquinas virtuales locales, OpenStack y Amazon EC2. 
 
 Rancher es una plataforma para la administración de cluster de kubernetes, nos permite desplegar y administrar clusters de kubernetes en varios proveedores, Amazon, Azure, Google, OpenStack, etc. 
 
@@ -24,11 +24,11 @@ Una vez que tenemos el contenedor corriendo, ya podemos acceder a rancher vía w
 
 
 
-# Cluster con maquinas virtuales 
+# Cluster con máquinas virtuales 
 
 Crear cluster 
 
-En este escenario  creamos 3 maquinas virtuales con el sistema operativo Ubuntu 16.04, donde tendremos un master y dos nodos worker. Necesitaremos tener docker instalado en las 3 maquinas, procedimiento de instalación:
+En este escenario  creamos 3 máquinas virtuales con el sistema operativo Ubuntu 16.04, donde tendremos un master y dos nodos worker. Necesitaremos tener docker instalado en las 3 máquinas, procedimiento de instalación:
 
 ```bash
 $ sudo apt-get update
@@ -78,7 +78,7 @@ Comando para nodos worker:
 $ sudo docker run -d --privileged --restart=unless-stopped --net=host -v /etc/kubernetes:/etc/kubernetes -v /var/run:/var/run rancher/rancher-agent:v2.2.3 --server https://192.168.2.99 --token jvs66p682df4xt59vfct6pxrww2dtxdlf8p7q9lvn28qtcvnvqr88v --cachecksum 4005736d9912fdcbc55a53f15fd2a1097c80e71ffcc70690a8f1ad09b5221787 --worker
 ```
 
-Por ultimo, empezara a crear el cluster y al cabo de unos minutos estará disponible.
+Por ultimo, empezará a crear el cluster y al cabo de unos minutos estará disponible.
 
 
 
@@ -94,7 +94,7 @@ Se elige la imagen de nginx.
 
 ![image-20200317080153069](./imagenes/image-ngix.png)
 
-Se desplega, y ya estaría funcionando.
+Se despliega, y ya estaría funcionando.
 
 ![image-20200317080250931](./imagenes/image-conf3.png)
 

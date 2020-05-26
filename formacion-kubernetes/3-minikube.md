@@ -31,7 +31,7 @@ Un *NodePort* es una forma de exponer un servicio mediante la IP del nodo en el 
 
     Si ahora abrimos el dashboard con `minikube dashboard`, se mostraría algo similar a lo de la figura siguiente. En la figura se observa cómo ha sido creado el *Deployment* `hello-minikube`.
 
-  Un *Deployment* es un objeto Kubernetes que de forma declarativa especifica, entre otros, la imagen usada para desplegar los pods, el número de réplicas deseadas, recursos (RAM, CPU, …) solicitados para los pods, y demás. 
+  Un *Deployment* es un objeto Kubernetes que de forma declarativa específica, entre otros, la imagen usada para desplegar los pods, el número de réplicas deseadas, recursos (RAM, CPU, …) solicitados para los pods, y demás. 
 
   ![KubernetesDashboard.png](./imagenes/kubernetes-dashboard.png)
 

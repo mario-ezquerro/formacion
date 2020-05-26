@@ -88,7 +88,7 @@ Los pods son la unidad atómica de Kubernetes. Al crear un despliegue en Kuberne
 
 Los pods, al igual que otros recursos de Kubernetes (ReplicaSets, volúmenes, …) se pueden crear sobre la marcha con el CLI indicando la imagen a partir de la que se crean, o se pueden crear a partir de archivos de manifiesto. Estos archivos de manifiesto se escriben en sintaxis [YAML](https://yaml.org/) y representan una forma declarativa de definir los recursos del cluster Kubernetes. En la sección [Despliegue de aplicaciones mediante archivos YAML](https://ualmtorres.github.io/SeminarioKubernetes/#truedespliegue-de-aplicaciones-mediante-archivos-yaml) se trata este tema.
 
-Para ilustrar cómo crear un pod mediante una manifiesto YAML, veremos cómo crear uno sencillo para MongoDB. Para ir familiarizándonos con Kubernetes, probaremos también con unos comandos básicos para mostrar información, mostrar los logs y redirección de puertos
+Para ilustrar cómo crear un pod mediante un manifiesto YAML, veremos cómo crear uno sencillo para MongoDB. Para ir familiarizándonos con Kubernetes, probaremos también con unos comandos básicos para mostrar información, mostrar los logs y redirección de puertos
 
 1. Creación del manifiesto YAML
 
@@ -158,7 +158,7 @@ Cada Nodo ejecuta al menos:
 
 ### 5.3. Servicios
 
-Se dice que en Kubernetes los pods son mortales o efímeros. Cuando un nodo desaparece (bien por un error o por una desconexión), los contenedores que están en el nodo también se pierden. En ese momento, un *ReplicaSet* se encarga de devolver el cluster al estado deseado y organiza la creación de nuevos pods en otros nodos disponibles para mantener funcionando la aplicación. Las réplicas de los pods han de ser intercambiables y **aunque cada pod en el cluster tenga su propia IP única, Kubernetes reconcialiará los cambios entre los pods para que las aplicaciones sigan funcionando**.
+Se dice que en Kubernetes los pods son mortales o efímeros. Cuando un nodo desaparece (bien por un error o por una desconexión), los contenedores que están en el nodo también se pierden. En ese momento, un *ReplicaSet* se encarga de devolver el cluster al estado deseado y organiza la creación de nuevos pods en otros nodos disponibles para mantener funcionando la aplicación. Las réplicas de los pods han de ser intercambiables y **aunque cada pod en el cluster tenga su propia IP única, Kubernetes reconciliará los cambios entre los pods para que las aplicaciones sigan funcionando**.
 
 Los servicios en Kubernetes son una abstracción que definen un conjunto lógico de pods y una política de acceso a ellos estableciendo un nombre para acceder a ellos. Esto permite que haya un acoplamiento débil entre pods dependientes. El acceso puede ser interno o externo al cluster. De esta forma, las aplicaciones sólo usarán los nombres de los servicios y no las IP de los pods, ya que éstas nunca son fijas debido a que, por un lado, los pods se crean y se destruyen para mantener el número de réplicas deseado; y por otro lado, un pod puede ser sustituido por otro ante un problema y el nuevo pod tendrá una IP diferente.
 
@@ -208,7 +208,7 @@ Si ahora vemos los detalles del deployment en el dashboard de Minikube veremos q
 
 ![ReplicaSetPods.png](./imagenes/replica-set-pods.png)
 
-Cada pod tiene una dirección IP única, pero esa IP no se expone fuera del cluster sin lo que se denomina un Servicio. **Los servicios pemiten que las aplicaciones reciban tráfico**.
+Cada pod tiene una dirección IP única, pero esa IP no se expone fuera del cluster sin lo que se denomina un Servicio. **Los servicios permiten que las aplicaciones reciban tráfico**.
 
 #### 5.3.1. Tipos de servicio
 
@@ -223,7 +223,7 @@ En función del ámbito de la exposición del servicio tenemos:
 
 Los servicios enrutan el tráfico entre los pods proporcionando una abstracción que permite que los pod mueran y se repliquen sin impactar en la aplicación.
 
-|      | El descubrimiento y enrutado entre pods dependientes (p.e. frontend y backend) son gestionados por los Servicios. Los servicios agrupan a sus pods usando etiquetas y selectores. Los servicios usan selectores y los pods son creados con etiquetas. Su emparejamiento por valores coincidentes es lo que agupa los pods en un servicio. |
+|      | El descubrimiento y enrutado entre pods dependientes (p.e. frontend y backend) son gestionados por los Servicios. Los servicios agrupan a sus pods usando etiquetas y selectores. Los servicios usan selectores y los pods son creados con etiquetas. Su emparejamiento por valores coincidentes es lo que agrupa los pods en un servicio. |
 | ---- | ------------------------------------------------------------ |
 |      |                                                              |
 
@@ -286,7 +286,7 @@ Anteriormente, en la sección [Despliegue de una aplicación](https://ualmtorres
 
    |      | Este es nuestro servicio. En el caso del tutorial, el puerto aleatorio asignado es el 30737 |
    | ---- | ------------------------------------------------------------ |
-   |      | Servicio `kubernetes` creado de forma predetermianda al iniciarse Minikube |
+   |      | Servicio `kubernetes` creado de forma predeterminada al iniciarse Minikube |
 
    Podemos acceder el servicio creado con
 

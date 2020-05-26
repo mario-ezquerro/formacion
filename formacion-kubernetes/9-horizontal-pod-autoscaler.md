@@ -12,7 +12,7 @@ De forma escueta podemos resumir de esta forma su funcionamiento:
 
 ![HPA.png](./imagenes/hpa.png)
 
-A continuación se muestran la redefinición de los Deployment de los ejemplos de la API y frontend del ejemplo de las calificaciones especificando una petición de CPU y memoria para cada pod.
+Se muestran la redefinición de los Deployment de los ejemplos de la API y frontend del ejemplo de las calificaciones especificando una petición de CPU y memoria para cada pod.
 
 Archivo `deployment-api.yaml` indicando límites de CPU y memoria:
 
@@ -103,7 +103,7 @@ Cuando no se especifica límite de CPU para un contenedor puede pasar una de est
 | ---- | ------------------------------------------------------------ |
 |      |                                                              |
 
-A continuación se muestra el manifiesto que crea un servicio para cada deployment.
+Muestra el manifiesto que crea un servicio para cada deployment.
 
 ```bash
 apiVersion: v1
@@ -129,7 +129,7 @@ spec:
     app: selectividad-front
 ```
 
-Una vez definidos los objetos Deployment y sus Service correspondientes, pasamos a crear el HPA que monitorizará el uso de recursos de los contenedores y solicitará su autoescalado en función del uso de los recursos. En este caso, y para poder ver en acción fácilmente el autoescalado en acción, fijamos que a partir del 15% de uso de la CPU se soliten la creación de nuevos pods. También se indica que el intervalo de escalado esté entre 1 y 10 réplicas según demanda.
+Una vez definidos los objetos Deployment y sus Service correspondientes, pasamos a crear el HPA que monitorizará el uso de recursos de los contenedores y solicitará su autoescalado en función del uso de los recursos. En este caso, y para poder ver en acción fácilmente el autoescalado en acción, fijamos que a partir del 15% de uso de la CPU se soliciten la creación de nuevos pods. También se indica que el intervalo de escalado esté entre 1 y 10 réplicas según demanda.
 
 ```bash
 apiVersion: autoscaling/v1

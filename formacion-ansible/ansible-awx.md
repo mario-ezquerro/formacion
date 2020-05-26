@@ -14,7 +14,7 @@ El objetivo final será el despliegue automático de una infraestructura en Open
 
 ## Requisitos[¶](https://jpcarmona.github.io/web/blog/proyecto/#requisitos)
 
-Para llevar a cabo el funcionamiento de este proyecto se hará uso de distintas tecnologías de sofware libre, se recomendaría tener conocimientos de algunas de estas tecnologías listadas a continuación. Además necesitaremos una infraestructura con OpenStack, en mi caso utilizo la de mi instituto.
+Para llevar a cabo el funcionamiento de este proyecto se hará uso de distintas tecnologías de software libre, se recomendaría tener conocimientos de algunas de estas tecnologías listadas a continuación. Además necesitaremos una infraestructura con OpenStack, en mi caso utilizo la de mi instituto.
 
 ### Tecnologías utilizadas[¶](https://jpcarmona.github.io/web/blog/proyecto/#tecnologias-utilizadas)
 
@@ -90,7 +90,7 @@ Importante tener en cuenta estas variables en futuros usos en la línea de coman
 
 ## Ansible[¶](https://jpcarmona.github.io/web/blog/proyecto/#ansible)
 
-A continuación se explicará los métodos y las buenas prácticas utilizadas con Ansible.
+Los métodos y las buenas prácticas utilizadas con Ansible.
 
 ### Extensiones de ficheros[¶](https://jpcarmona.github.io/web/blog/proyecto/#extensiones-de-ficheros)
 
@@ -157,7 +157,7 @@ all:
         ansible_host: 172.22.0.4
 ```
 
-En la definición de este ejemplo utilizo algunas variables comúnes de ansible:
+En la definición de este ejemplo utilizo algunas variables comunes de ansible:
 
 - ansible_host: Es la ip de la máquina donde se ejecutarán las tareas
 - ansible_user: Usuario con que se conectará por ssh
@@ -172,7 +172,7 @@ Son variables definidas para los hosts del inventario. Estas variables deben enc
 
 ### Playbooks[¶](https://jpcarmona.github.io/web/blog/proyecto/#playbooks)
 
-Son los fichero principales que ejecuta ansible donde se especifican las tareas a ajecutar y en que hosts debe ejecutarse, ya sean especificadas en el propio playbook o llamando por ejemplo a roles.
+Son los fichero principales que ejecuta ansible donde se especifican las tareas a ejecutar y en que hosts debe ejecutarse, ya sean especificadas en el propio playbook o llamando por ejemplo a roles.
 
 - Ejemplo de Playbook:
 
@@ -199,7 +199,7 @@ Son los fichero principales que ejecuta ansible donde se especifican las tareas 
     var1: "value1"
 ```
 
-En este playbook se lanzara la tarea de mostrar un mensaje en local y luego para todos los hosts del inventario se ejecutara un rol que esta incluido en la tarea.
+En este playbook se ejecutara la tarea de mostrar un mensaje en local y luego para todos los hosts del inventario se ejecutara un rol que está incluido en la tarea.
 
 ### Roles[¶](https://jpcarmona.github.io/web/blog/proyecto/#roles)
 
@@ -273,7 +273,7 @@ Comentar que la instalación de esta herramienta puede ser realizada de 3 formas
 - Usando Kubernetes
 - En local con Docker
 
-En mi caso he optado por utilizar la instalación en local con Docker ya que es la forma mas sencilla.
+En mi caso he optado por utilizar la instalación en local con Docker ya que es la forma más sencilla.
 
 - Descarga de repositorio de AWX:
 
@@ -338,11 +338,11 @@ EOF
 - En mi caso he convertido el fichero inventory de tipo INI a YAML.
 - Las contraseñas deben ser distintas si se van a utilizar en un entorno de producción[(Ver Anexo 3)](https://jpcarmona.github.io/web/blog/proyecto/#anexo-3).
 
-Con esto ya podríamos ejecutar el playbook pero antes realizaremos una modificación en una tarea de un rol. Esta modificación consistirá en comentar la tarea que nos crea los contenedores en local al lanzar el playbook, ya que esta tarea no tiene la acción parametrizada y queremos realizar algunas acciones antes del depspliegue de AWX.
+Con esto ya podríamos ejecutar el playbook pero antes realizaremos una modificación en una tarea de un rol. Esta modificación consistirá en comentar la tarea que nos crea los contenedores en local al lanzar el playbook, ya que esta tarea no tiene la acción parametrizada y queremos realizar algunas acciones antes del despliegue de AWX.
 
 La tarea es `Start the containers` situada en `${PROJECT_DIR}/${AWX_REPO_NAME}/installer/roles/local_docker/tasks/compose.yml`. Además también comentaremos las dos últimas tareas de este fichero que para nuestro caso no nos sirve para nada y se nos mostrará un error debido a que no se van a crear los contenedores.
 
-- Antes que nada debemos tener permisos en el directorio de los volumenes:
+- Antes que nada debemos tener permisos en el directorio de los volúmenes:
 
 ```bash
 sudo mkdir -p /var/lib/awx/
@@ -376,7 +376,7 @@ docker-compose up -d
 
 #### Creación de proyecto mediante líneas de comandos[¶](https://jpcarmona.github.io/web/blog/proyecto/#creacion-de-proyecto-mediante-lineas-de-comandos)
 
-- Antes que nada estableceremos algunas variables necesarias para la ejecución de dichos comandos:
+- Estableceremos algunas variables necesarias para la ejecución de dichos comandos:
 
 ```bash
 ## For all connections:
@@ -441,7 +441,7 @@ tower-cli project create \
   --force-on-exists
 ```
 
-Antes de usar el proyecto deberemos de esperar ya que estará descargandolo del repositorio.
+Antes de usar el proyecto deberemos de esperar ya que estará descargándolo del repositorio.
 
 - Una vez creado el proyecto crearemos el inventario:
 
@@ -516,7 +516,7 @@ Para la creación de máquinas en Opestack hemos utilizado los módulos de Ansib
 - os_server: Para crear las instancias
 - os_floating_ip: Para asignar ips flotantes
 
-También he necisitado utilizar el cliente de openstack para actualizar el nombre del servidor DNS que reparte el servidor DHCP de la subred de mi proyecto.
+También he necesitado utilizar el cliente de openstack para actualizar el nombre del servidor DNS que reparte el servidor DHCP de la subred de mi proyecto.
 
 - Creación de infraestructura de servidores mediante Ansible:
 
@@ -534,7 +534,7 @@ Al finalizar la ejecución de dicho playbook tendremos creada la infraestructura
 
 Además se nos creará el inventario de dichos servidores creados.
 
-### Instalación y configuracion de los servidores[¶](https://jpcarmona.github.io/web/blog/proyecto/#instalacion-y-configuracion-de-los-servidores)
+### Instalación y configuración de los servidores[¶](https://jpcarmona.github.io/web/blog/proyecto/#instalacion-y-configuracion-de-los-servidores)
 
 - Se instalarán los servicios mediante el módulo de Ansible `apt`.
 
@@ -547,7 +547,7 @@ Además se nos creará el inventario de dichos servidores creados.
   > - systemd
   > - replace
 
-- Instalación y configuracion de los servidores mediante Ansible:
+- Instalación y configuración de los servidores mediante Ansible:
 
 ```bash
 cd ${PROJECT_DIR}/${PROJECT_REPO_NAME}
@@ -679,7 +679,7 @@ openssl rand -base64 30
 
 Arreglando problemas con AWX
 
-En AWX tengo el problema de que no es capaz de ejecutar algunos módulos que en mi propio entorno de python3 si puedo, por lo tanto procedo a relizar los siguientes cambios en el contenedor de AWX que ejecuta las tareas de ansible.
+En AWX tengo el problema de que no es capaz de ejecutar algunos módulos que en mi propio entorno de python3 si puedo, por lo tanto procedo a realizar los siguientes cambios en el contenedor de AWX que ejecuta las tareas de ansible.
 
 - Nos conectamos al contenedor:
 
@@ -706,7 +706,7 @@ source /var/lib/awx/venv/ansible/bin/activate
 pip install --upgrade pip
 ```
 
-- Instalamos nuevos modulos a partir del fichero [requirements](https://raw.githubusercontent.com/jpcarmona/proyectoawx/master/requeriments.txt) de mi repositorio del proyecto:
+- Instalamos nuevos módulos a partir del fichero [requirements](https://raw.githubusercontent.com/jpcarmona/proyectoawx/master/requeriments.txt) de mi repositorio del proyecto:
 
 ```bash
 curl -o requeriments.txt https://raw.githubusercontent.com/jpcarmona/proyectoawx/master/requeriments.txt

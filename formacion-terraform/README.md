@@ -51,7 +51,7 @@ Sistemas operativos compatibles con Terraform:
 - OpenBSD: 32­bit | 64­bit
 - Solaris: 64­bit
 
-Seleccionamos el sistema operativo y la arquitectura, en mi caso elegiremos Linux 64­bit puesto que lo instalaremos en una maquina con Fedora 29.
+Seleccionamos el sistema operativo y la arquitectura, en mi caso elegiremos Linux 64­bit puesto que lo instalaremos en una máquina con Fedora 29.
 
 **2. Instalación**
 

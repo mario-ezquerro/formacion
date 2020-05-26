@@ -25,7 +25,7 @@ power_level: 9001
 
 ### 3. Listas
 
-Podemos definir listas de dos formas: En un listado por líneas en el  que cada item aparecerá indentando y con un guión, o bien de forma  compacta separando los items por comas y encerrando los elementos de la  lista entre corchetes
+Podemos definir listas de dos formas: En un listado por líneas en el  que cada ítem aparecerá indentado y con un guion, o bien de forma  compacta separando los ítems por comas y encerrando los elementos de la  lista entre corchetes
 
 ```
 ---

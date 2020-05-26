@@ -4,7 +4,7 @@ Antes de pasar a crear proyectos más completos que incluyan varias  operaciones
 
 Los playbooks y los roles, que veremos más adelante, se escriben en sintaxis YAML, descrita en el Apéndice [YAML](https://ualmtorres.github.io/CursoAnsible/tutorial/#trueyaml).
 
-En los playbooks seguiremos la esctrucura siguiente:
+En los playbooks seguiremos la estructura siguiente:
 
 - Nombre del Playbook
 - Indicar si queremos recuperar información de los hosts administrados
@@ -81,7 +81,7 @@ $ ansible-playbook mysql.yml --become --start-at-task "Update package cache" --s
 
 ### 2. Modificación de archivos con `blockinfile`
 
-El módulo [`blockinfile`](https://docs.ansible.com/ansible/latest/modules/blockinfile_module.html?highlight=blockinfile) inserta, actualiza o elimina un bloque de líneas en un archivo. El  texto modificado queda delemitado por líneas que actúan como marcador.
+El módulo [`blockinfile`](https://docs.ansible.com/ansible/latest/modules/blockinfile_module.html?highlight=blockinfile) inserta, actualiza o elimina un bloque de líneas en un archivo. El  texto modificado queda delimitado por líneas que actúan como marcador.
 
 Ejemplo 10. Playbook `blockinfile.yml`
 
@@ -482,7 +482,7 @@ Ejemplo 22. Playbook para el reinicio de servicios `services.yml`
 
 ### 10. Reiniciar una batería de servidores
 
-Podemos usar el módulo `shell` para lanzar un `reboot` sobre los nodos adninistrados. Además, podemos combinar esta operación con el módulo [wait_for_connection](https://docs.ansible.com/ansible/latest/modules/wait_for_connection_module.html?highlight=wait_for_connection) que espera la cantidad de segundos que le indiquemos. Una vez  recuperada la conexión dentro de ese periodo, continúa la ejecución del  playbook.
+Podemos usar el módulo `shell` para lanzar un `reboot` sobre los nodos administrados. Además, podemos combinar esta operación con el módulo [wait_for_connection](https://docs.ansible.com/ansible/latest/modules/wait_for_connection_module.html?highlight=wait_for_connection) que espera la cantidad de segundos que le indiquemos. Una vez  recuperada la conexión dentro de ese periodo, continúa la ejecución del  playbook.
 
 Ejemplo 23. Playbook `reboot-and-wait.yml`
 

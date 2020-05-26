@@ -16,7 +16,9 @@ Al instalar Microk8s usando snap, puede crear una implementación "limpia" de lo
 - kubelet
 - cni
 
-Los servicios adicionales, como el panel de control de Kubernetes, se pueden habilitar / deshabilitar fácilmente con los comandos microk8s.enable y microk8s.disable. La lista de servicios disponibles son:
+Los servicios adicionales, como el panel de control de Kubernetes, se pueden habilitar / deshabilitar fácilmente con los comandos microk8s.enable y microk8s.disable. 
+
+La lista de servicios disponibles son:
 
 1. Dns
 2. Dashboard, including grafana and influxdb

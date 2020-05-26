@@ -1,6 +1,6 @@
 ## Uso de variables
 
-Las variables en Ansible son gestionadas por el motor de plantillas [Jinja2](http://jinja.pocoo.org/). Jinja2 propociona sustitución de variables usando la sintaxis de doble llave `{{ variable }}`.
+Las variables en Ansible son gestionadas por el motor de plantillas [Jinja2](http://jinja.pocoo.org/). Jinja2 proporciona sustitución de variables usando la sintaxis de doble llave `{{ variable }}`.
 
 En Ansible se pueden definir variables a varios niveles, cada uno con un nivel de prioridad. Las variables definidas en variables con mayor  nivel de prioridad sobrescriben los valores definidos en lugares con  mayor nivel de prioridad.
 
@@ -47,7 +47,7 @@ nodes_by_name:
     shared: {name: testshared, type: shared, management_ip: 10.0.0.63, tunnel_ip: 10.0.1.63, provider_ip: 10.0.0.63}
 ```
 
-En las tareas o en las plantillas de archivos podremos acceder a estos valores posteriormente con la notacion punto (`.`). Como las variables están definidas en `group_vars/all.yml` no tendremos que indicar nada para poder acceder a sus valores.
+En las tareas o en las plantillas de archivos podremos acceder a estos valores posteriormente con la notación punto (`.`). Como las variables están definidas en `group_vars/all.yml` no tendremos que indicar nada para poder acceder a sus valores.
 
 ```
 {{ nodes_by_name.controller.management_ip }}

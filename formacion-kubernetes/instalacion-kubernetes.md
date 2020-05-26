@@ -18,7 +18,7 @@
         4. [Inicio del cluster](#314-inicio-del-cluster)
     2. [Instalación de OLM](#32-instalación-de-olm)
     3. [Instalación de Operator SDK](#33-instalación-de-operator-sdk)
-        1. [Prerequisitos](#331-prerequisitos)
+        1. [Prerrequisitos](#331-prerrequisitos)
         2. [Instalación](#332-instalación)
 4. [Mongodb Operator](#4-mongodb-operator)
     1. [Instalación y comprobación](#41-instalación-y-comprobación)
@@ -31,7 +31,7 @@
 
 ## 1.1. Descripción del proyecto
 
-El objetivo del proyecto es la creación de un cluster de **Kubernetes** con **Kubeadm** en máquinas virtuales levantadas en **OpenStack** para mostrar el uso y funcionamiento de un **Operator** ya existente como **Mongodb** y la posterior creación, despligue y gestión de un **Operator** no existente, por ejemplo **Mariadb**, mediante el uso de **Helm**, **Operator SDK** y **OLM**. También se realizará la publicación del **operator** en el repositorio oficial de la comunidad.
+El objetivo del proyecto es la creación de un cluster de **Kubernetes** con **Kubeadm** en máquinas virtuales levantadas en **OpenStack** para mostrar el uso y funcionamiento de un **Operator** ya existente como **Mongodb** y la posterior creación, despliegue y gestión de un **Operator** no existente, por ejemplo **Mariadb**, mediante el uso de **Helm**, **Operator SDK** y **OLM**. También se realizará la publicación del **operator** en el repositorio oficial de la comunidad.
 
 ## 1.2 Escenario
 
@@ -39,19 +39,19 @@ El objetivo del proyecto es la creación de un cluster de **Kubernetes** con **K
 
 - Master (172.22.200.123): Ubuntu Bionic-18.04 m1.large, funciona como master del cluster de K8s.
 
-- Nodo-1 (172.22.200.171): Ubuntu Bionic-18.04 m1.medium, actua como nodo del cluster de K8s.
+- Nodo-1 (172.22.200.171): Ubuntu Bionic-18.04 m1.medium, actúa como nodo del cluster de K8s.
 
-- Nodo-2 (172.22.201.40): Ubuntu Bionic-18.04 m1.medium, actua como nodo del cluster de K8s.
+- Nodo-2 (172.22.201.40): Ubuntu Bionic-18.04 m1.medium, actúa como nodo del cluster de K8s.
 
-- Nodo-3 (172.22.200.124): Ubuntu Bionic-18.04 m1.medium, actua como nodo del cluster de K8s.
+- Nodo-3 (172.22.200.124): Ubuntu Bionic-18.04 m1.medium, actúa como nodo del cluster de K8s.
 
 # 2. ¿Qué es un Operator?
 
-Un **Operator** o operador es un método para empaquetar, implementar y administrar una aplicación de **Kubernetes**. Siendo esta administrada mediante las API de **Kubernetes** y las herramientas de **kubectl**. Los **operadores** nos permiten automatizar el proceso de despliegue de una aplicación en nuestros clústeres de **Kubernetes**, así como sus actualizaciones, copias de seguridad y escalado a lo largo del tiempo. También podremos recolectar métricas de nuestros **Operadores** para su análisis, aunque esta es una función que todavía se esa testeando y que llegará dentro de poco.
+Un **Operator** u operador es un método para empaquetar, implementar y administrar una aplicación de **Kubernetes**. Siendo esta administrada mediante las API de **Kubernetes** y las herramientas de **kubectl**. Los **operadores** nos permiten automatizar el proceso de despliegue de una aplicación en nuestros clústeres de **Kubernetes**, así como sus actualizaciones, copias de seguridad y escalado a lo largo del tiempo. También podremos recolectar métricas de nuestros **Operadores** para su análisis, aunque esta es una función que todavía se esa testeando y que llegará dentro de poco.
 
 ## 2.1. Componentes
 
-A continuación se detallarán lo componentes principales de **Operator**.
+Se detallarán lo componentes principales de **Operator**.
 
 ### Kubernetes
 
@@ -79,7 +79,7 @@ El **Operator Lifecycle Manager** o **OLM** para abreviar, es el componente enca
 
 ### 3.1.1 Chequeo de puertos
 
-Se crearón tres grupos de seguridad en **Openstack**: uno común, uno para el master y otro para los nodos. En ellos se abrirán los puertos necesarios para el funcionamiento y acceso de las aplicaciones:
+Se crearon tres grupos de seguridad en **Openstack**: uno común, uno para el master y otro para los nodos. En ellos se abrirán los puertos necesarios para el funcionamiento y acceso de las aplicaciones:
 
 - Proyecto:
 
@@ -177,7 +177,7 @@ Por último, añadiremos cada nodo al cluster con el siguiente comando que nos p
 
 ## 3.3. Instalación de Operator SDK
 
-### 3.3.1. Prerequisitos
+### 3.3.1. Prerrequisitos
 
 - Dep version v0.5.0+.
 
@@ -241,7 +241,7 @@ spec:
 
 # 6. Conclusión
 
-Operator ofrece la rápida implantación de aplicaciones con toleracia a fallos y recursivas mediante su uso en clusteres de kubernetes. Al poseer estas características, se esta volviendo una herramienta más popular y aumentará su uso en los próximos años. Aun así, esta sigue teniendo algunas mejoras como la centralización de la documentación.
+Operator ofrece la rápida implantación de aplicaciones con tolerancia a fallos y recursivas mediante su uso en clusteres de kubernetes. Al poseer estas características, se esta volviendo una herramienta más popular y aumentará su uso en los próximos años. Aun así, está sigue teniendo algunas mejoras como la centralización de la documentación.
 
 # 7. Siguientes pasos
 

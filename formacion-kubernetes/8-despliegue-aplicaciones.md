@@ -1,6 +1,6 @@
 ## 8. Despliegue de aplicaciones mediante archivos YAML
 
-Hasta ahora, las interacción con Kubernetes la hemos hecho sobre la marcha, creando despliegues, servicios, escalado de aplicaciones y demás. Esto nos ha servido familiarizarnos tanto con los objetos básicos de Kubernetes (Pod, ReplicaSet, Deployment, Service, ConfigMap, Secret, Namespace, …), como con operaciones habituales (escalado, actualización de versiones, …). Sin embargo, esta no es la forma habitual. Esta forma de uso de Kubernetes está más orientada a la creación de tareas puntuales. En cambio, cuando se trata de operaciones que queremos que sean repetibles, la forma de operar consiste en crear archivos YAML especificando el objeto que se quiere crear en Kubernetes (espacio de nombres, despliegue, servicio, …). Una vez creados estos archivos, se usará `kubectl` para cargarlos/desplegarlos en Kubernetes.
+Hasta ahora, la interacción con Kubernetes la hemos hecho sobre la marcha, creando despliegues, servicios, escalado de aplicaciones y demás. Esto nos ha servido familiarizarnos tanto con los objetos básicos de Kubernetes (Pod, ReplicaSet, Deployment, Service, ConfigMap, Secret, Namespace, …), como con operaciones habituales (escalado, actualización de versiones, …). Sin embargo, esta no es la forma habitual. Esta forma de uso de Kubernetes está más orientada a la creación de tareas puntuales. En cambio, cuando se trata de operaciones que queremos que sean repetibles, la forma de operar consiste en crear archivos YAML especificando el objeto que se quiere crear en Kubernetes (espacio de nombres, despliegue, servicio, …). Una vez creados estos archivos, se usará `kubectl` para cargarlos/desplegarlos en Kubernetes.
 
 |      | El uso de archivos para despliegues Kubernetes nos permitirá además beneficiarnos de las ventajas de los sistemas de control de versiones, sometiendo nuestros recursos de Kubernetes al control de versiones, facilidad de distribución y trabajo en equipo. |
 | ---- | ------------------------------------------------------------ |
@@ -47,9 +47,9 @@ Al abrir un navegador en nuestro equipo en `localhost:83` accederemos a la web d
 
 ![DotNet2019Web.png](./imagenes/dot-net2019-web.png)
 
-Si ahora queremos actualizar el pod con una nueva versión de la aplicación, basta con modificar el manifiesto YAML con la nueva imagen y volver a aplicar los cambios. Para ilustrar esto, modifiquemos la versión del manifiesto anterior a la imagen `ualmtorres/dotnet2019web:v1` en lugar de la version `v0`. La nueva versión tiene los botones en verde.
+Si ahora queremos actualizar el pod con una nueva versión de la aplicación, basta con modificar el manifiesto YAML con la nueva imagen y volver a aplicar los cambios. Para ilustrar esto, modifiquemos la versión del manifiesto anterior a la imagen `ualmtorres/dotnet2019web:v1` en lugar de la versión `v0`. La nueva versión tiene los botones en verde.
 
-La nueva versión del manifiesto quuedaría así:
+La nueva versión del manifiesto quedaría así:
 
 ```yaml
 apiVersion: v1
@@ -78,7 +78,7 @@ Esto hará que se descargue la nueva imagen, se cree un nuevo pod con la nueva i
 
 ### 8.2. Despliegue de un Deployment
 
-Normalmente no desplegaremos Pods. En su lugar desplegaremos Deployments. En ellos podremos incluir contenedores con imágenes diferentes para que puedan trabajar de forma coordinada. Un ejemplo habitual es el de frontend y backend. En la espeficación de los contenedores indicaremos además de la imagen de partida, número de réplicas, recursos solicitados (p.e. cantidad de RAM, porcentaje de CPU, …). Esto, además de desacoplar frontend y backend, desde el punto de vista de la escalabilidad, permite escalar frontend y backend de forma independiente.
+Normalmente no desplegaremos Pods. En su lugar desplegaremos Deployments. En ellos podremos incluir contenedores con imágenes diferentes para que puedan trabajar de forma coordinada. Un ejemplo habitual es el de frontend y backend. En la especificación de los contenedores indicaremos además de la imagen de partida, número de réplicas, recursos solicitados (p.e. cantidad de RAM, porcentaje de CPU, …). Esto, además de desacoplar frontend y backend, desde el punto de vista de la escalabilidad, permite escalar frontend y backend de forma independiente.
 
 |      | Un archivo de Deployment proporciona una forma declarativa de creación de Pods y ReplicaSets. En el archivo de Deployment se especifica el estado deseado. |
 | ---- | ------------------------------------------------------------ |
@@ -186,7 +186,7 @@ Este sería su resultado en un navegador
 
 ![jsonreader.png](./imagenes/jsonreader.png)
 
-|      | Hacer hincapie en que se puede ver funcionando correctamente este ejemplo porque ya se creó previamente en la sección [Ejemplo de escalado de una aplicación](https://ualmtorres.github.io/SeminarioKubernetes/#trueejemplo-de-escalado-de-una-aplicaci-n) el servicio para `jsonproducer`. Si ese servicio no hubiese sido creado, `jsonreader` no tendría acceso a `jsonreader`. |
+|      | Hacer hincapié en que se puede ver funcionando correctamente este ejemplo porque ya se creó previamente en la sección [Ejemplo de escalado de una aplicación](https://ualmtorres.github.io/SeminarioKubernetes/#trueejemplo-de-escalado-de-una-aplicaci-n) el servicio para `jsonproducer`. Si ese servicio no hubiese sido creado, `jsonreader` no tendría acceso a `jsonreader`. |
 | ---- | ------------------------------------------------------------ |
 |      |                                                              |
 
@@ -204,7 +204,7 @@ Sin embargo, vemos que el frontend no puede recuperar los datos del backend. Est
 
 Un Service es una abstracción que define una agrupación de Pods y una política de acceso a ellos. El conjunto de Pods al que se dirige un Servicio están determinados por un **selector**.
 
-En la sección [Ejemplo de escalado de una aplicación](https://ualmtorres.github.io/SeminarioKubernetes/#trueejemplo-de-escalado-de-una-aplicaci-n) habíamos creado un servicio directamente al hacer `kubectl expose deployment jsonproducer --type=NodePort`. A continuación vamos a ver cómo podemos crear ese servicio mediante un manifiesto YAML.
+En la sección [Ejemplo de escalado de una aplicación](https://ualmtorres.github.io/SeminarioKubernetes/#trueejemplo-de-escalado-de-una-aplicaci-n) habíamos creado un servicio directamente al hacer `kubectl expose deployment jsonproducer --type=NodePort`. Vamos a ver cómo podemos crear ese servicio mediante un manifiesto YAML.
 
 Vamos a crear un archivo de Servicio denominado `json-reader-service.yaml`. Este archivo básicamente contiene entre otros el nombre de servicio, el tipo del servicio (ClusterIP, NodePort, …), el puerto de acceso a los pods del despliegue y el selector que identifica al despliegue con el que se corresponde el servicio creado.
 
@@ -409,11 +409,11 @@ El manifiesto anterior lo lanzamos con
 $ kubectl apply -f mysql-sin-secrets.yaml
 ```
 
-A continuación vamos a modificar el manifiesto anterior para hacer uso de objetos Secret.
+Vamos a modificar el manifiesto anterior para hacer uso de objetos Secret.
 
 Kubernetes guarda los secretos en base64. Por tanto, los valores que vayamos a almacenar en los pares clave-valor de un secreto tendrán que estar en base64.
 
-Para codificar en base64 el valor `password` que utilizamos en el ejemplo anterior para contraseña del `root`, ejecutaremos el comnando siguiente desde la línea de comandos:
+Para codificar en base64 el valor `password` que utilizamos en el ejemplo anterior para contraseña del `root`, ejecutaremos el comando siguiente desde la línea de comandos:
 
 ```bash
 $ echo -n 'password' | base64

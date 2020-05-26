@@ -93,7 +93,7 @@ ualmtorres.apache
     └── main.yml
 ```
 
-|      | Valores por defecto para varables usadas en el rol. Serán sobrescritas por las definidas en `vars` |
+|      | Valores por defecto para variables usadas en el rol. Serán sobrescritas por las definidas en `vars` |
 | ---- | ------------------------------------------------------------ |
 |      | Archivos requeridos para la ejecución del rol. Estos archivos, a diferencia de los situados en `templates` no pueden ser mmanipulados. |
 |      | Carpeta de *handlers* con las tareas pendientes de ejecución generadas por `notify` en tareas ya ejecutadas (p.e. reiniciar servicios tras una modificación de la configuración) |
@@ -115,7 +115,7 @@ Por ejemplo, podemos incluir la tarea siguiente en el archivo `tasks/main.yml` p
 
 ### 3. Organización de playbooks y roles
 
-Con el paso del tiempo, la carpeta `roles` irá creciendo  con los roles usados y desarrollados. Todos ellos serán reutilizados en  los distintos proyectos en lo que sean últiles. A continuación se  muestra un ejemplo de la organización propuesta para playbooks y roles.
+Con el paso del tiempo, la carpeta `roles` irá creciendo  con los roles usados y desarrollados. Todos ellos serán reutilizados en  los distintos proyectos en lo que sean útiles. A continuación se  muestra un ejemplo de la organización propuesta para playbooks y roles.
 
 ```bash
 .

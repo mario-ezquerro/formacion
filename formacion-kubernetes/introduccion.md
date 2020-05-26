@@ -31,7 +31,7 @@ Un cluster de Kubernetes está formado por dos tipos de recursos (referidos a m�
 
 ![Cluster de kubernetes](./imagenes/kubernetes-cluster.svg)
 
-Al desplegar una aplicación en Kubernetes el Master inicia los  contenedores de la aplicación. El máster organiza los contenedores para  que se ejecuten en los nodos (*worker*) del cluster. Los nodos se comunican con el master usando la [API de Kubernetes](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/#-strong-api-overview-strong-). La API es expuesta a través del nodo Master y es posible usarla directamente para intectuar con el cluster.
+Al desplegar una aplicación en Kubernetes el Master inicia los  contenedores de la aplicación. El máster organiza los contenedores para  que se ejecuten en los nodos (*worker*) del cluster. Los nodos se comunican con el master usando la [API de Kubernetes](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.15/#-strong-api-overview-strong-). La API es expuesta a través del nodo Master y es posible usarla directamente para interactuar con el cluster.
 
 |      | Una aplicación de tratamiento de imágenes y que esté basada en  contenedores podría interactuar con la API de Kubernetes solicitando a  demanda la creación de pods dedicados a operaciones específicas (p.e.  filtrado, aclarado, …) en respuesta a las acciones de los usuarios. Una vez finalizada la operación, la aplicación volvería a interactuar con  la API de Kubernetes para la liberación de los pods creados para la  resolución de la tarea. |
 | ---- | ------------------------------------------------------------ |
@@ -69,7 +69,7 @@ Los clusters de Kubernetes se pueden desplegar sobre máquinas físicas o virtua
 
 ### 2.2. Arquitectura de Kubernetes
 
-Tal y como hemos introducido en el apartado anterior, un cluster de Kubernetes está formado por dos tipos de unidades, el nodo *Master* y los nodos *Worker* (o siemplemente *Nodos*).
+Tal y como hemos introducido en el apartado anterior, un cluster de Kubernetes está formado por dos tipos de unidades, el nodo *Master* y los nodos *Worker* (o simplemente *Nodos*).
 
 La figura siguiente ilustra estas dos unidades, así como algunos de los componentes más importantes en su interior.
 

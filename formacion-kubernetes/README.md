@@ -26,7 +26,7 @@ Por funcionalidades como estas y otras más sorprendentes aún son por  la que p
 
 
 
-- [Introduccion ](introduccion.md)
+- [Introducción ](introduccion.md)
 - [Instalación Kubernetes](./instalacion-kubernetes.md)
 - Instalación kubernetes en un portátil (dos maneras)
   1. [Usando Microk8s](3-microk8s.md)
@@ -34,12 +34,12 @@ Por funcionalidades como estas y otras más sorprendentes aún son por  la que p
 - [kubectl](4-kubectl.md)
 - [Componentes de kubernetes](5-Componentes.md)
 - [Escalado kubernetes](6-escalado.md)
-- [Despliege de aplicaciones](8-despliege-aplicaciones.md)
+- [Despliegue de aplicaciones](8-despliegue-aplicaciones.md)
 - [Escalado Horizontal](9-horizontal-pod-autoscaler.md)
 - [Almacenamiento](10-almacenamiento.md)
 - [Init Containers](11-init.md)
 - [Istio](13-istio.md)
-- [Apendices](12-apendices.md)
+- [Apéndices](12-apendices.md)
 
 
 

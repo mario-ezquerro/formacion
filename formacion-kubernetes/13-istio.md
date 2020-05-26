@@ -10,11 +10,11 @@ La figura siguiente ilustra una aplicación sin Istio. En ella, cada microservic
 
 ![beforeIstio.jpg](./imagenes/beforeIstio.jpg)
 
-La figura siguiente ilustra cómo en las aplicaciones basadas en Istio los pods están formados por dos contenedores: el contenedor propio del microservicio y el del sidecar. Al sidecar se le delegan las tareas de *discovery*, balanceo, resilencia, métricas y trazado, lo que facilita el desarrollo de los microservicios.
+La figura siguiente ilustra cómo en las aplicaciones basadas en Istio los pods están formados por dos contenedores: el contenedor propio del microservicio y el del sidecar. Al sidecar se le delegan las tareas de *discovery*, balanceo, *resilience*, métricas y trazado, lo que facilita el desarrollo de los microservicios.
 
 ![afterIstio.jpg](./imagenes/afterIstio.jpg)
 
-Istio ofrece una forma declarativa, mediante la creación de manifiestos YAML, de gestión del tráfico, enrutado selectivo de peticiones (en lugar del round robin que ofrece Kubernetes), diferentes tipos de despliegue (*canary, A/B, blue/green*), resilencia a nivel de red (con opciones de *retry*, *timeout*), control de acceso, observación de microservicios distribuidos comprendiendo los flujos y trazas y pudiendo ver las métricas importantes de forma inmediata, inyección de caos para poner a prueba la resilencia de aplicaciones y servicios, por citar algunas de sus funcionalidades destacadas.
+Istio ofrece una forma declarativa, mediante la creación de manifiestos YAML, de gestión del tráfico, enrutado selectivo de peticiones (en lugar del round robin que ofrece Kubernetes), diferentes tipos de despliegue (*canary, A/B, blue/green*), resilencia a nivel de red (con opciones de *retry*, *timeout*), control de acceso, observación de microservicios distribuidos comprendiendo los flujos y trazas y pudiendo ver las métricas importantes de forma inmediata, inyección de caos para poner a prueba la *resilience* de aplicaciones y servicios, por citar algunas de sus funcionalidades destacadas.
 
 Para activar el uso de Istio en un namespace (p.e. `default`) se haría con
 
@@ -24,15 +24,15 @@ kubectl label namespace default istio-injection=enabled
 
 ### 13.2. Arquitectura de Istio
 
-Istio consta de un plano de control y un plano de datos. El plano de datos está formado por proxies que se integran en los pods de la aplicación. Usando el patrón del sidecar, cada instancia de la aplicación tendrá su proxy dedicado a través del cual pasa todo el tráfico antes de llegar a la aplicación. Estos proxies individuales son gestionados individualmente por Istio para enrutar, filtrar y aumentar el tráfico según sea necesario.
+Istio consta de un plano de control y un plano de datos. El plano de datos está formado por proxis que se integran en los pods de la aplicación. Usando el patrón del sidecar, cada instancia de la aplicación tendrá su proxy dedicado a través del cual pasa todo el tráfico antes de llegar a la aplicación. Estos proxies individuales son gestionados individualmente por Istio para enrutar, filtrar y aumentar el tráfico según sea necesario.
 
 ![istioArchitecture.jpg](./imagenes/istio-architecture.jpg)
 
-Además, Istio permite realizar deciciones de enrutado en función de las cabeceras HTTP (p.e. tipo de navegador, usuario, …)
+Además, Istio permite realizar decisiones de enrutado en función de las cabeceras HTTP (p.e. tipo de navegador, usuario, …)
 
 ![istioCanary.jpg](./imagenes/istio-canary.jpg)
 
-|      | Algo a tener en cuenta es que los componentes del plano de control son aplicaciones sin estado, lo que favorece que puedan escalar horizontalmente. Todos los datos están almacenados en *etcd* como descricpciones personalizadas de recursos Kubernetes. |
+|      | Algo a tener en cuenta es que los componentes del plano de control son aplicaciones sin estado, lo que favorece que puedan escalar horizontalmente. Todos los datos están almacenados en *etcd* como descripciones personalizadas de recursos Kubernetes. |
 | ---- | ------------------------------------------------------------ |
 |      |                                                              |
 
@@ -88,7 +88,7 @@ Sin embargo, toda esta funcionalidad tiene un coste sobre la infraestructura. Cu
 
 - *Dark launch*: Se trata de un despliegue a producción que no es visible a los clientes. En este caso Istio permite duplicar (*mirror*) el tráfico a una versión de la aplicación y ver cómo se comporta respecto a la versión del pod en producción. De esta forma se están realizando peticiones en las condiciones de producción al nuevo servicio sin afectar al tráfico de la versión en producción. No obstante, hay que tener una consideración especial con los servicios que traten con datos o estén vinculados a otros servicios, para no introducir duplicados, provocar inconsistencias y otros problemas derivados de la duplicación de peticiones.
 
-### 13.4. Técnicas de resilencia
+### 13.4. Técnicas de *resilience*
 
 - *Circuit breaker*: Determina el número máximo de peticiones que puede soportar un pod. Pasado ese valor no admite más hasta que se recupere.
 - *Pool ejection*: Saca de un nodo a un pod que esté dando fallos creando un nuevo pod que los sustituya en otro nodo.
@@ -266,7 +266,7 @@ jsonreader-v0     1/1     1            1           40s
 
 #### 13.5.2. Creación de los *subsets* mediante `DestinationRule`
 
-A continación vamos a definir todas las versiones de un servicio que vamos a tener elegibles en el cluster de Kubernetes y que posteriormente serán seleccionadas o usadas cuando pasemos a controlar el tráfico a cada versión. Las `DestinationRule` se usan para definir las distintas instancias o versiones disponibles que se pueden usar de cada servicio. Cada servicio tendrá su `DestinationRule` con lo siguiente:
+A continuación vamos a definir todas las versiones de un servicio que vamos a tener elegibles en el cluster de Kubernetes y que posteriormente serán seleccionadas o usadas cuando pasemos a controlar el tráfico a cada versión. Las `DestinationRule` se usan para definir las distintas instancias o versiones disponibles que se pueden usar de cada servicio. Cada servicio tendrá su `DestinationRule` con lo siguiente:
 
 - `metatada.name`: Nombre.
 - `spec.host`: Host contra el que se lanzará este servicio. Puede ser un nombre DNS (admite *wildcards*) o un nombre de servicio válido en nuestra aplicación.
@@ -328,7 +328,7 @@ Por último, crearemos los `VirtualService` para indicarle a Istio la versión c
 
 Con los servicios virtuales conseguimos poner en marcha la capa complementaria a la aplicación que controlará su tráfico. Esto nos permite usar y cambiar a versiones concretas, derivar un porcentaje del tráfico a versiones determinadas (p.e. para despliegues `canary`), tener versiones diferentes para usuarios diferentes, control de tráfico basado en CIDR, y demás.
 
-|      | Con Istio podremos cambiar el enrutado a unos servicios u otros de forma dinánica. Basta con aplicar otro manifiesto con los nuevos valores de enrutado de los `VirtualService` que seleccionen las versiones correspondientes, el porcentaje de derivación de tráfico entre versiones que coexistan, y demás. El *mesh* cambiará de acuerdo a las nuevas especificaciones. |
+|      | Con Istio podremos cambiar el enrutado a unos servicios u otros de forma dinámica. Basta con aplicar otro manifiesto con los nuevos valores de enrutado de los `VirtualService` que seleccionen las versiones correspondientes, el porcentaje de derivación de tráfico entre versiones que coexistan, y demás. El *mesh* cambiará de acuerdo a las nuevas especificaciones. |
 | ---- | ------------------------------------------------------------ |
 |      |                                                              |
 

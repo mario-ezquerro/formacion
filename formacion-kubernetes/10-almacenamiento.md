@@ -49,7 +49,7 @@ $ kubectl apply -f redis.yaml
 
 Un volumen `hostPath` monta en el contenedor un archivo o un directorio del sistema de archivos del nodo en el que está ejecutándose el pod.
 
-|      | Este tipo de volúmenes no es una solución buena para clusters Kubernetes con varios nodos, ya que no se guardarían los mismos datos en cada nodo.No obstante se podrá valorar si [rsync](https://rsync.samba.org/) o [Syncthing](https://syncthing.net/) ofrecen soporte suficiente para usar volúmenes `hostPath` en clusters con más de un nodo. |
+|      | Este tipo de volúmenes no es una solución buena para clusters Kubernetes con varios nodos, ya que no se guardarían los mismos datos en cada nodo. No obstante se podrá valorar si [rsync](https://rsync.samba.org/) o [Syncthing](https://syncthing.net/) ofrecen soporte suficiente para usar volúmenes `hostPath` en clusters con más de un nodo. |
 | ---- | ------------------------------------------------------------ |
 |      |                                                              |
 
@@ -73,7 +73,7 @@ spec:
       path: /data/pv
 ```
 
-|      | Crear volúmenes `hostPath` es una operación atrevida, ya que estamos accediendo e incluso escribiendo en el sistema de archivos del nodo en el que esté el pod.Es posible controlar la creación del volumen para montar un archivo o directorio del nodo sólo en aquellos casos en los que previamente exista dicho archivo o directorio. Para ello, tenemos que crear el volumen con `type: Directory`. Esto hará que sólo se cree el pod si existen el directorio previamente en el nodo.`  volumes:  - name: myvolume    hostPath:      type: Directory       path: /data/pv`Sólo se creará el volumen si existe en el nodo el directorio especificado en `path`Para más información sobre cómo limitar y configurar el uso de `hostPath`, consultar la [documentación oficial de volúmenes `hostPath`](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath) |
+|      | Crear volúmenes `hostPath` es una operación atrevida, ya que estamos accediendo e incluso escribiendo en el sistema de archivos del nodo en el que esté el pod.Es posible controlar la creación del volumen para montar un archivo o directorio del nodo sólo en aquellos casos en los que previamente exista dicho archivo o directorio. Para ello, tenemos que crear el volumen con `type: Directory`. Esto hará que sólo se cree el pod si existen el directorio previamente en el nodo.`  volumes:  - name: myvolume    hostPath:      type: Directory       path: /data/pv`  Sólo se creará el volumen si existe en el nodo el directorio especificado en `path`Para más información sobre cómo limitar y configurar el uso de `hostPath`, consultar la [documentación oficial de volúmenes `hostPath`](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath) |
 | ---- | ------------------------------------------------------------ |
 |      |                                                              |
 

@@ -50,7 +50,7 @@ jsonproducer-7769d76894-nhtl4   1/1     Running   0          38s
 jsonproducer-7769d76894-qbvzd   1/1     Running   0          38s
 ```
 
-Si ahora por cualquier motivo dejase de estar disponible alguno de los nodos en los que se encuentra desplegados los pods de la apliación, o bien dejase de funcionar alguno de los pods, el Controlador de Deployment de Kubernetes se encargaría de organizar la creación de nuevos pods para volver a alcanzar el estado deseado, en nuestro caso 4 réplicas.
+Si ahora por cualquier motivo dejase de estar disponible alguno de los nodos en los que se encuentra desplegados los pods de la aplicación, o bien dejase de funcionar alguno de los pods, el Controlador de Deployment de Kubernetes se encargaría de organizar la creación de nuevos pods para volver a alcanzar el estado deseado, en nuestro caso 4 réplicas.
 
 Probemos esta funcionalidad eliminando el último pod y comprobando como Kubernetes organiza inmediatamente la creación de otro pod que lo sustituya.
 
@@ -118,7 +118,7 @@ $ kubectl rollout undo deployments jsonproducer
 deployment.extensions/jsonproducer rolled back
 ```
 
-Tras este comando, el Controlador de Deployment de Kubernetes irá reemplanzando los pods hasta alcanzar el estado deseado. A continuación se ve el estado intermedio mientras se vuelve a la versión anterior.
+Tras este comando, el Controlador de Deployment de Kubernetes irá reemplazando los pods hasta alcanzar el estado deseado. Se ve el estado intermedio mientras se vuelve a la versión anterior.
 
 ```bash
 $ kubectl get pods
