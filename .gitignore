@@ -1,6 +1,10 @@
 # Archivos de Mac fuera
 .DS_Store
 
+formacion-jenkins/
+node-red-fiware/
+.vscode/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
