@@ -1,0 +1,22 @@
+
+version: '3.7'
+services:
+  rancher:
+    image: rancher/rancher:latest
+    container_name: rancher
+    hostname: rancher
+    restart: always
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - './data:/var/lib/rancher'
+      - './ssl/fullchain.pem:/etc/rancher/ssl/cert.pem'
+      - './ssl/privkey.pem:/etc/rancher/ssl/key.pem'
+    command: --no-cacerts
+    networks:
+      - rancher
+
+networks:
+  rancher:
+    driver: bridge
